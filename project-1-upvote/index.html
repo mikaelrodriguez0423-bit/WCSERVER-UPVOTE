@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UpVote! — Vue 3</title>
+  <!-- Bulma CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Project Stylesheet -->
+  <link rel="stylesheet" href="./public/styles.css">
+</head>
+
+<body>
+  <div id="app" class="section">
+    <div class="container" style="max-width: 620px;">
+      <h2 class="title has-text-centered dividing-header">UpVote!</h2>
+
+      <div class="submissions-list">
+        <!-- List Rendering with Dynamic Sorting and Conditional Class -->
+        <article v-for="submission in sortedSubmissions" :key="submission.id" class="media submission-card"
+          :class="{ 'blue-border': submission.votes >= 20 }">
+          <!-- Isolated Sub-Component -->
+          <submission-component :submission="submission" :submissions="sortedSubmissions"></submission-component>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue 3 Global Build CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <!-- Mock Seed Dataset -->
+  <script src="src/seed.js"></script>
+  <!-- Main Application Script -->
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
